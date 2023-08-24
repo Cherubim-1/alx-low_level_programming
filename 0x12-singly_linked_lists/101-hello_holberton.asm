@@ -1,18 +1,10 @@
-section .data
-    hello_fmt db "Hello, Holberton", 10, 0
-
-section .text
-    global main
-    extern printf
-
+global   main
+	  extern    printf
 main:
-    sub rsp, 8
-    mov rdi, hello_fmt
-    xor rax, rax
-    call printf
-    add rsp, 8
-
-    mov rax, 60
-    xor edi, edi
-    syscall
+	  mov   edi, format
+	  xor   eax, eax
+	  call  printf
+	  mov   eax, 0
+	  ret
+format: db `Hello, Holberton\n`,0
 
