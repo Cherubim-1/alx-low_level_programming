@@ -1,12 +1,18 @@
 section .data
-    hello db "Hello, Holberton,",0   ; Null-terminated string
+    hello_fmt db "Hello, Holberton", 10, 0
 
 section .text
     global main
     extern printf
 
 main:
-    mov rdi, hello       ; Set format specifier
-    call printf          ; Call printf function
-    xor eax, eax         ; Return 0
-    ret
+    sub rsp, 8
+    mov rdi, hello_fmt
+    xor rax, rax
+    call printf
+    add rsp, 8
+
+    mov rax, 60
+    xor edi, edi
+    syscall
+
